@@ -17,7 +17,7 @@ Class MahasiswaController extends Controller
          //fungsi eloquent menampilkan data menggunakan pagination
         //$mahasiswa = Mahasiswa::all(); // Mengambil semua isi tabel
         $mahasiswa = $mahasiswa = DB::table('mahasiswa')->get();
-        $posts = Mahasiswa::orderBy('Nim', 'desc')->paginate(6);
+        $posts = Mahasiswa::orderBy('Nim', 'desc')->paginate(3);
         return view('mahasiswa.index', compact('mahasiswa'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -46,6 +46,10 @@ Class MahasiswaController extends Controller
             'kelas' => 'required',
             'jurusan' => 'required',
             'no_hp' => 'required',
+            //tambahan kolom untuk tugas praktikum No.1;
+            'email' => 'required',
+            'alamat' => 'required',
+            'tanggal_lahir' => 'required',
         ]);
         //fungsi eloquent untuk menambah data
         Mahasiswa::create($request->all());
@@ -98,6 +102,10 @@ Class MahasiswaController extends Controller
             'kelas' => 'required',
             'jurusan' => 'required',
             'no_hp' => 'required',
+            //tambahan kolom untuk tugas praktikum No.1;
+            'email' => 'required',
+            'alamat' => 'required',
+            'tanggal_lahir' => 'required',
         ]);
    //fungsi eloquent untuk mengupdate data inputan kita
     Mahasiswa::find($Nim)->update($request->all());

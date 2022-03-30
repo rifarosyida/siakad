@@ -25,6 +25,9 @@
             <th>Kelas</th>
             <th>Jurusan</th>
             <th>No_Handphone</th>
+            <th>E-Mail</th>
+            <th>Alamat</th>
+            <th>Tanggal_Lahir</th>
             <th width="280px">Action</th>
         </tr>
     @foreach ($mahasiswa as $Mahasiswa)
@@ -35,6 +38,10 @@
             <td>{{ $Mahasiswa->kelas }}</td>
             <td>{{ $Mahasiswa->jurusan }}</td>
             <td>{{ $Mahasiswa->no_hp }}</td>
+            {{-- tambahan tampilan form untuk tugas praktikum No.1; --}}
+            <td>{{ $Mahasiswa->email }}</td>
+            <td>{{ $Mahasiswa->alamat }}</td>
+            <td>{{ $Mahasiswa->tanggal_lahir }}</td>
             <td>
             <form action="{{ route('mahasiswa.destroy',$Mahasiswa->nim) }}" method="POST">
  

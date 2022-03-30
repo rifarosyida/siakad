@@ -23,5 +23,9 @@ class Mahasiswa extends Model
         'kelas',
         'jurusan',
         'no_hp',
+        //tambahan kolom untuk tugas praktikum No.1;
+        'email',
+        'alamat',
+        'tanggal_lahir',
         ];
     }
