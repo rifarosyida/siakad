@@ -25,12 +25,13 @@
             <th>Kelas</th>
             <th>Jurusan</th>
             <th>No_Handphone</th>
+            {{-- tambahan tampilan form untuk tugas praktikum No.1; --}}
             <th>E-Mail</th>
             <th>Alamat</th>
-            <th>Tanggal_Lahir</th>
-            <th width="280px">Action</th>
+            <th>Tgl_Lahir</th>
+            <th>Action</th>
         </tr>
-    @foreach ($mahasiswa as $Mahasiswa)
+    @foreach ($posts as $Mahasiswa)
     <tr>
  
             <td>{{ $Mahasiswa->nim }}</td>
@@ -42,7 +43,7 @@
             <td>{{ $Mahasiswa->email }}</td>
             <td>{{ $Mahasiswa->alamat }}</td>
             <td>{{ $Mahasiswa->tanggal_lahir }}</td>
-            <td>
+            <td width="300px">
             <form action="{{ route('mahasiswa.destroy',$Mahasiswa->nim) }}" method="POST">
  
                 <a class="btn btn-info" href="{{ route('mahasiswa.show',$Mahasiswa->nim) }}">Show</a>
@@ -55,4 +56,7 @@
         </tr>
         @endforeach
     </table>
+    <div class="d-flex justify-content-center">
+    {{ $posts->links() }}
+    </div>
 @endsection

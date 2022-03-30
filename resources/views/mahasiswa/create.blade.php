@@ -28,32 +28,32 @@
                 </div>
                 <div class="form-group">
                     <label for="Nama">Nama</label> 
-                    <input type="Nama" name="nama" class="form-control" id="Nama" aria-describedby="Nama" > 
+                    <input type="text" name="nama" class="form-control" id="Nama" aria-describedby="Nama" > 
                 </div>
                 <div class="form-group">
                     <label for="Kelas">Kelas</label> 
-                    <input type="Kelas" name="kelas" class="form-control" id="Kelas" aria-describedby="password" > 
+                    <input type="text" name="kelas" class="form-control" id="Kelas" aria-describedby="password" > 
                 </div>
                 <div class="form-group">
                     <label for="Jurusan">Jurusan</label> 
-                    <input type="Jurusan" name="jurusan" class="form-control" id="Jurusan" aria-describedby="Jurusan" > 
+                    <input type="text" name="jurusan" class="form-control" id="Jurusan" aria-describedby="Jurusan" > 
                 </div>
                 <div class="form-group">
                     <label for="No_Handphone">No_Handphone</label> 
-                    <input type="No_Handphone" name="no_hp" class="form-control" id="No_Handphone" aria-describedby="No_Handphone" > 
+                    <input type="text" name="no_hp" class="form-control" id="No_Handphone" aria-describedby="No_Handphone" > 
                 </div>
                 {{-- tambahan tampilan form untuk tugas praktikum No.1; --}}
                 <div class="form-group">
                     <label for="Email">E-Mail</label> 
-                    <input type="Email" name="email" class="form-control" id="Email" aria-describedby="Email" > 
+                    <input type="email" name="email" class="form-control" id="Email" aria-describedby="Email" > 
                 </div>
                 <div class="form-group">
                     <label for="Alamat">Alamat</label> 
-                    <input type="Alamat" name="alamat" class="form-control" id="Alamat" aria-describedby="Alamat" > 
+                    <input type="text" name="alamat" class="form-control" id="Alamat" aria-describedby="Alamat" > 
                 </div>
                 <div class="form-group">
                     <label for="Tanggal_Lahir">Tanggal_Lahir</label> 
-                    <input type="Tanggal_Lahir" name="tanggal_lahir" class="form-control" id="Tanggal_Lahir" aria-describedby="Tanggal_Lahir" > 
+                    <input type="date" name="tanggal_lahir" class="form-control" id="Tanggal_Lahir" aria-describedby="Tanggal_Lahir" > 
                 </div>
             <button type="submit" class="btn btn-primary">Submit</button>
             </form>
