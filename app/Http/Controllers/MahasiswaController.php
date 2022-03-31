@@ -15,12 +15,10 @@ Class MahasiswaController extends Controller
     public function index()
     {
          //fungsi eloquent menampilkan data menggunakan pagination
-        //$mahasiswa = Mahasiswa::all(); // Mengambil semua isi tabel
-        $mahasiswa = DB::table('mahasiswa')->get();
-        $posts = Mahasiswa::orderBy('nim', 'desc')->paginate(3);
+         //mengurutkan berdasarkan NIM
+        $mahasiswa = Mahasiswa::orderBy('nim', 'desc')->paginate(3);
         return view('mahasiswa.index', compact('mahasiswa'))
-            ->with('i', (request()->input('page', 1) - 1) * 5)
-            ->with(compact('posts'));
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -128,6 +126,16 @@ Class MahasiswaController extends Controller
        Mahasiswa::find($Nim)->delete();
        return redirect()->route('mahasiswa.index')
        -> with('success', 'Mahasiswa Berhasil Dihapus');   
+    }
+
+    public function search(Request $request){
+        $keyword = $request -> cari;
+        $mahasiswa = Mahasiswa::where('nama','like','%'. $keyword . '%')
+            ->orWhere('nim', 'like', '%' .$keyword. '%')
+            ->orWhere('jurusan', 'like', '%' .$keyword. '%')
+            ->orWhere('kelas', 'like', '%' .$keyword. '%')
+            ->paginate(3)->withQueryString();
+        return view('mahasiswa.index', compact('mahasiswa'));
     }
 }
 

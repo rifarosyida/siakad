@@ -9,3 +9,5 @@ Route::get('/', function () {
 });
 
 Route::resource('mahasiswa', MahasiswaController::class);
+//Tugas 3 Search
+Route::get('/search', [MahasiswaController::class,'search'])->name('mahasiswa.search');

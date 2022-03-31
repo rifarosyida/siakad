@@ -1,24 +1,37 @@
 @extends('mahasiswa.layout')
-
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left mt-2">
-                <h2>JURUSAN TEKNOLOGI INFORMASI-POLITEKNIK NEGERI MALANG</h2>
-            </div>
-            <div class="float-right my-2">
-                <a class="btn btn-success" href="{{ route('mahasiswa.create') }}"> Input Mahasiswa</a>
-            </div>
+<div class="row">
+    <div class="col-lg-12 margin-tb">
+        <div class="pull-left mt-2">
+            <h2>JURUSAN TEKNOLOGI INFORMASI-POLITEKNIK NEGERI MALANG</h2>
         </div>
+        <form action="{{ route('mahasiswa.search') }}" class="mt-4" method="get">
+            @csrf
+            <div class="row flex-row">
+                <div class="col-md-4">
+                    <div class="input-group">    
+                        <input type="text" name="cari" class="form-control" placeholder="Cari Nama/Nim/Kelas/Jurusan" aria-label="cari" aria-describedby="basic-addon1">
+                        <div class="input-group-append">
+                            <input type="submit" value="Cari" class="btn btn-secondary" id="cari">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="float-right my-2">
+                        <a class="btn btn-success" href="{{ route('mahasiswa.create') }}"> Input Mahasiswa</a>
+                    </div>
+                </div>                     
+            </div>
+        </form>
     </div>
- 
+</div>
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
     @endif
- 
     <table class="table table-bordered">
+     
         <tr>
             <th>Nim</th>
             <th>Nama</th>
@@ -31,7 +44,7 @@
             <th>Tgl_Lahir</th>
             <th>Action</th>
         </tr>
-    @foreach ($posts as $Mahasiswa)
+    @foreach ($mahasiswa as $Mahasiswa)
     <tr>
  
             <td>{{ $Mahasiswa->nim }}</td>
@@ -57,6 +70,6 @@
         @endforeach
     </table>
     <div class="d-flex justify-content-center">
-    {{ $posts->links() }}
+    {{ $mahasiswa->links() }}
     </div>
 @endsection
