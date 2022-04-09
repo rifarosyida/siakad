@@ -20,41 +20,47 @@
                     </ul>
                 </div>
             @endif
-            <form method="post" action="{{ route('mahasiswa.update', $Mahasiswa->nim) }}" id="myForm">
+            <form method="post" action="{{ route('mahasiswa.update', $mahasiswa->nim) }}" id="myForm">
             @csrf
             @method('PUT')
             <div class="form-group">
                 <label for="Nim">Nim</label> 
-                <input type="text" name="nim" class="form-control" id="Nim" value="{{ $Mahasiswa->nim }}" aria-describedby="Nim" > 
+                <input type="text" name="nim" class="form-control" id="Nim" value="{{ $mahasiswa->nim }}" aria-describedby="Nim" > 
             </div>
             <div class="form-group">
                 <label for="Nama">Nama</label> 
-                <input type="text" name="nama" class="form-control" id="Nama" value="{{ $Mahasiswa->nama }}" aria-describedby="Nama" > 
+                <input type="text" name="nama" class="form-control" id="Nama" value="{{ $mahasiswa->nama }}" aria-describedby="Nama" > 
             </div>
-            <div class="form-group">
+            <label for="Kelas">Kelas</label>
+            <select name="kelas" class="form-control">
+                @foreach($kelas as $kls)
+                    <option value="{{$kls->id}}" {{ $mahasiswa->kelas_id == $kls->id ? 'selected' : ''}}>{{$kls->nama_kelas}}</option>
+                @endforeach
+            </select>
+            {{-- <div class="form-group">
                 <label for="Kelas">Kelas</label> 
-                <input type="text" name="kelas" class="form-control" id="Kelas" value="{{ $Mahasiswa->kelas }}" aria-describedby="Kelas" > 
-            </div>
+                <input type="text" name="kelas" class="form-control" id="Kelas" value="{{ $mahasiswa->kelas->nama_kelas }}" aria-describedby="Kelas" > 
+            </div> --}}
             <div class="form-group">
                 <label for="Jurusan">Jurusan</label> 
-                <input type="text" name="jurusan" class="form-control" id="Jurusan" value="{{ $Mahasiswa->jurusan }}" aria-describedby="Jurusan" > 
+                <input type="text" name="jurusan" class="form-control" id="Jurusan" value="{{ $mahasiswa->jurusan }}" aria-describedby="Jurusan" > 
             </div>
             <div class="form-group">
                 <label for="No_Handphone">No_Handphone</label> 
-                <input type="text" name="no_hp" class="form-control" id="No_Handphone" value="{{ $Mahasiswa->no_hp }}" aria-describedby="No_Handphone" > 
+                <input type="text" name="no_hp" class="form-control" id="No_Handphone" value="{{ $mahasiswa->no_hp }}" aria-describedby="No_Handphone" > 
             </div>
             {{-- tambahan tampilan form untuk tugas praktikum No.1; --}}
             <div class="form-group">
                 <label for="Email">E-Mail</label> 
-                <input type="email" name="email" class="form-control" id="Email" value="{{ $Mahasiswa->email }}" aria-describedby="Email" > 
+                <input type="email" name="email" class="form-control" id="Email" value="{{ $mahasiswa->email }}" aria-describedby="Email" > 
             </div>
             <div class="form-group">
                 <label for="Alamat">Alamat</label> 
-                <input type="text" name="alamat" class="form-control" id="Alamat" value="{{ $Mahasiswa->alamat }}" aria-describedby="Alamat" > 
+                <input type="text" name="alamat" class="form-control" id="Alamat" value="{{ $mahasiswa->alamat }}" aria-describedby="Alamat" > 
             </div>
             <div class="form-group">
                 <label for="Tanggal_Lahir">Tanggal_Lahir</label> 
-                <input type="date" name="tanggal_lahir" class="form-control" id="Tanggal_Lahir" value="{{ $Mahasiswa->tanggal_lahir }}" aria-describedby="Tanggal_Lahir" > 
+                <input type="date" name="tanggal_lahir" class="form-control" id="Tanggal_Lahir" value="{{ $mahasiswa->tanggal_lahir }}" aria-describedby="Tanggal_Lahir" > 
             </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

@@ -2,25 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\Mahasiswa as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model; //Model Eloquen
 
 class Mahasiswa extends Model
 {
     protected $table='mahasiswa'; // Eloquent akan membuat model mahasiswa menyimpan record di tabel mahasiswa
     protected $primaryKey = 'nim'; // Memanggil isi DB Dengan primarykey
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+   
     protected $fillable = [
         'nim',
         'nama',
-        'kelas',
+        'kelas_id',
         'jurusan',
         'no_hp',
         //tambahan kolom untuk tugas praktikum No.1;
@@ -28,4 +21,9 @@ class Mahasiswa extends Model
         'alamat',
         'tanggal_lahir',
         ];
+
+        public function kelas()
+        {
+            return $this->belongsTo(Kelas::class);
+        }
     }

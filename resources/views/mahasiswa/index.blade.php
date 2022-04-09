@@ -2,7 +2,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb">
-        <div class="pull-left mt-2">
+        <div class="pull-left mt-2 text-center">
             <h2>JURUSAN TEKNOLOGI INFORMASI-POLITEKNIK NEGERI MALANG</h2>
         </div>
         <form action="{{ route('mahasiswa.search') }}" class="mt-4" method="get">
@@ -38,27 +38,26 @@
             <th>Kelas</th>
             <th>Jurusan</th>
             <th>No_Handphone</th>
-            {{-- tambahan tampilan form untuk tugas praktikum No.1; --}}
+            <!-- tambahan tampilan form untuk tugas praktikum No.1; -->
             <th>E-Mail</th>
             <th>Alamat</th>
             <th>Tgl_Lahir</th>
             <th>Action</th>
         </tr>
-    @foreach ($mahasiswa as $Mahasiswa)
-    <tr>
+    @foreach ($paginate as $Mahasiswa)
+        <tr>
  
             <td>{{ $Mahasiswa->nim }}</td>
             <td>{{ $Mahasiswa->nama }}</td>
-            <td>{{ $Mahasiswa->kelas }}</td>
+            <td>{{ $Mahasiswa->kelas->nama_kelas }}</td>
             <td>{{ $Mahasiswa->jurusan }}</td>
             <td>{{ $Mahasiswa->no_hp }}</td>
-            {{-- tambahan tampilan form untuk tugas praktikum No.1; --}}
+            <!-- tambahan tampilan form untuk tugas praktikum No.1; -->
             <td>{{ $Mahasiswa->email }}</td>
             <td>{{ $Mahasiswa->alamat }}</td>
             <td>{{ $Mahasiswa->tanggal_lahir }}</td>
             <td width="300px">
-            <form action="{{ route('mahasiswa.destroy',$Mahasiswa->nim) }}" method="POST">
- 
+            <form action="{{ route('mahasiswa.destroy',$Mahasiswa->nim) }}" method="POST"> 
                 <a class="btn btn-info" href="{{ route('mahasiswa.show',$Mahasiswa->nim) }}">Show</a>
                 <a class="btn btn-primary" href="{{ route('mahasiswa.edit',$Mahasiswa->nim) }}">Edit</a>
                 @csrf
@@ -70,6 +69,6 @@
         @endforeach
     </table>
     <div class="d-flex justify-content-center">
-    {{ $mahasiswa->links() }}
+    {{ $paginate->links() }}
     </div>
 @endsection
