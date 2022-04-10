@@ -3,16 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mahasiswa;
+use App\Models\Mahasiswa_MataKuliah;
 use App\Models\Kelas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 Class MahasiswaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function nilai($id)
+    {
+        $nilai = Mahasiswa_MataKuliah::with("matakuliah")->where("mahasiswa_id", $id)->get();
+        $nilai->mahasiswa = Mahasiswa::with('kelas')->where('id_mahasiswa', $id)->first();
+        return view('mahasiswa.nilai', compact('nilai'));
+    }
+
     public function index()
     {
          //fungsi eloquent menampilkan data menggunakan pagination

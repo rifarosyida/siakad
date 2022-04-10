@@ -26,4 +26,7 @@ class Mahasiswa extends Model
         {
             return $this->belongsTo(Kelas::class);
         }
-    }
+        public function matakuliah(){
+            return $this->hasMany(MataKuliah::class);
+        }
+}

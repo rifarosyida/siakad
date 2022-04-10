@@ -37,7 +37,7 @@
             <th>Nama</th>
             <th>Kelas</th>
             <th>Jurusan</th>
-            <th>No_Handphone</th>
+            {{-- <th>No_Handphone</th> --}}
             <!-- tambahan tampilan form untuk tugas praktikum No.1; -->
             <th>E-Mail</th>
             <th>Alamat</th>
@@ -51,7 +51,7 @@
             <td>{{ $Mahasiswa->nama }}</td>
             <td>{{ $Mahasiswa->kelas->nama_kelas }}</td>
             <td>{{ $Mahasiswa->jurusan }}</td>
-            <td>{{ $Mahasiswa->no_hp }}</td>
+            {{-- <td>{{ $Mahasiswa->no_hp }}</td> --}}
             <!-- tambahan tampilan form untuk tugas praktikum No.1; -->
             <td>{{ $Mahasiswa->email }}</td>
             <td>{{ $Mahasiswa->alamat }}</td>
@@ -63,6 +63,7 @@
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Delete</button>
+                <a class="btn btn-warning" href="{{ route('nilai', $Mahasiswa->id_mahasiswa) }}">Nilai</a>
             </form>
             </td>
         </tr>
