@@ -70,6 +70,6 @@
         @endforeach
     </table>
     <div class="d-flex justify-content-center">
-    {{ $paginate->links() }}
+    {{ $paginate->withQueryString()->links() }}
     </div>
 @endsection

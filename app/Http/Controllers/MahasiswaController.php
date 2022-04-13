@@ -163,13 +163,17 @@ Class MahasiswaController extends Controller
     }
 
     public function search(Request $request){
-        $keyword = $request -> cari;
-        $mahasiswa = Mahasiswa::where('nama','like','%'. $keyword . '%')
+        $keyword = $request->cari;
+        $paginate = Mahasiswa::with('kelas')
+            ->orWhere('nama','like','%'. $keyword . '%')
             ->orWhere('nim', 'like', '%' .$keyword. '%')
             ->orWhere('jurusan', 'like', '%' .$keyword. '%')
-            ->orWhere('kelas', 'like', '%' .$keyword. '%')
-            ->paginate(3)->withQueryString();
-        return view('mahasiswa.index', compact('mahasiswa'));
+            ->orWhereHas('kelas', function($query) {
+                $query->where('nama_kelas', 'like', '%' .request('cari'). '%');
+            })
+            ->paginate(3);
+            // ->withQueryString();
+        return view('mahasiswa.index', compact('paginate'));
     }
 }
 
