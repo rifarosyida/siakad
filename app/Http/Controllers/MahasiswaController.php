@@ -7,6 +7,9 @@ use App\Models\Mahasiswa_MataKuliah;
 use App\Models\Kelas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use PDF;
+
 Class MahasiswaController extends Controller
 {
     public function nilai($id)
@@ -55,20 +58,29 @@ Class MahasiswaController extends Controller
             'nama' => 'required',
             'kelas' => 'required',
             'jurusan' => 'required',
+            'foto' => 'required',
             'no_hp' => 'required',
             //tambahan kolom untuk tugas praktikum No.1;
             'email' => 'required',
             'alamat' => 'required',
             'tanggal_lahir' => 'required',
         ]);
+        $image_name = '';
+        if($request->file('foto'))
+        {
+            $image_name = $request->file('foto')->store('images', 'public');
+        }
+
         $mahasiswa = new Mahasiswa;
         $mahasiswa->nim = $request->get('nim');
         $mahasiswa->nama = $request->get('nama');
         $mahasiswa->jurusan = $request->get('jurusan');
+        $mahasiswa->featured_image = $image_name;
         $mahasiswa->no_hp = $request->get('no_hp');
         $mahasiswa->email = $request->get('email');
         $mahasiswa->alamat = $request->get('alamat');
         $mahasiswa->tanggal_lahir = $request->get('tanggal_lahir');
+        
         $kelas = new Kelas;
         $kelas->id = $request->get('kelas');
 
@@ -119,6 +131,7 @@ Class MahasiswaController extends Controller
             'nama' => 'required',
             'kelas' => 'required',
             'jurusan' => 'required',
+            'foto' => 'required',
             'no_hp' => 'required',
             //tambahan kolom untuk tugas praktikum No.1;
             'email' => 'required',
@@ -127,6 +140,19 @@ Class MahasiswaController extends Controller
             
         ]);
         $mahasiswa = Mahasiswa::with('kelas')->where('nim', $Nim)->first();
+
+        if($mahasiswa->featured_image && file_exists(public_path('app/public'. $mahasiswa->featured_image)))
+        {
+            Storage::delete('public/' . $mahasiswa->featured_image);
+        }
+        if($request->file('foto')) 
+        {
+            $image_name = $request->file('foto')->store('images', 'public'); 
+    
+            $mahasiswa->featured_image = $image_name;
+        }
+
+
         $mahasiswa->nim = $request->get('nim');
         $mahasiswa->nama = $request->get('nama');
         $mahasiswa->jurusan = $request->get('jurusan');

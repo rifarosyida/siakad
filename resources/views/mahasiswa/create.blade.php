@@ -3,7 +3,7 @@
 @section('content')
  
 <div class="container mt-5">
- 
+ @csrf
     <div class="row justify-content-center align-items-center">
         <div class="card" style="width: 24rem;">
             <div class="card-header">
@@ -20,7 +20,7 @@
                     </ul>
                 </div>
             @endif
-            <form method="post" action="{{ route('mahasiswa.store') }}" id="myForm">
+            <form method="post" action="{{ route('mahasiswa.store') }}" id="myForm" enctype="multipart/form-data">
             @csrf
                 <div class="form-group">
                     <label for="Nim">Nim</label> 
@@ -41,6 +41,11 @@
                 <div class="form-group">
                     <label for="Jurusan">Jurusan</label> 
                     <input type="text" name="jurusan" class="form-control" id="Jurusan" aria-describedby="Jurusan" > 
+                </div>
+                {{-- Jobsheet pertemuan 10(form gambar) --}}
+                <div class="form-group">
+                    <label for="foto">Foto</label>
+                    <input type="file" name="foto" id="image" required class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="No_Handphone">No_Handphone</label> 

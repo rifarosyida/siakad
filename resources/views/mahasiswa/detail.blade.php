@@ -13,6 +13,7 @@
                     <li class="list-group-item"><b>Nama: </b>{{$Mahasiswa->nama}}</li>
                     <li class="list-group-item"><b>Kelas: </b>{{$Mahasiswa->kelas->nama_kelas}}</li>
                     <li class="list-group-item"><b>Jurusan: </b>{{$Mahasiswa->jurusan}}</li>
+                    <li class="list-group-item"><b>Foto: </b><img width="150px"src="{{asset('storage/'.$Mahasiswa->featured_image)}}"  alt="foto"></li>
                     <li class="list-group-item"><b>No_Handphone: </b>{{$Mahasiswa->no_hp}}</li>
                     {{-- tambahan tampilan form untuk tugas praktikum No.1; --}}
                     <li class="list-group-item"><b>E-Mail: </b>{{$Mahasiswa->email}}</li>
