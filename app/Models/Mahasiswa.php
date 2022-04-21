@@ -15,6 +15,7 @@ class Mahasiswa extends Model
         'nama',
         'kelas_id',
         'jurusan',
+        'featured_image',
         'no_hp',
         //tambahan kolom untuk tugas praktikum No.1;
         'email',

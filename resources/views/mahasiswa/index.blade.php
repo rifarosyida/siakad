@@ -37,7 +37,7 @@
             <th>Nama</th>
             <th>Kelas</th>
             <th>Jurusan</th>
-            {{-- <th>No_Handphone</th> --}}
+            <th>Foto</th>
             <!-- tambahan tampilan form untuk tugas praktikum No.1; -->
             <th>E-Mail</th>
             <th>Alamat</th>
@@ -51,6 +51,7 @@
             <td>{{ $Mahasiswa->nama }}</td>
             <td>{{ $Mahasiswa->kelas->nama_kelas }}</td>
             <td>{{ $Mahasiswa->jurusan }}</td>
+            <td><img width="50px" src="{{asset('storage/'.$Mahasiswa->featured_image)}}"></td>
             {{-- <td>{{ $Mahasiswa->no_hp }}</td> --}}
             <!-- tambahan tampilan form untuk tugas praktikum No.1; -->
             <td>{{ $Mahasiswa->email }}</td>
