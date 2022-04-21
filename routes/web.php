@@ -14,3 +14,6 @@ Route::get('/search', [MahasiswaController::class,'search'])->name('mahasiswa.se
 
 //ORM dengan relasi
 Route::get('/nilai/{id}', [MahasiswaController::class,'nilai'])->name('nilai');
+
+//cetakKhs
+Route::get('/nilai/{id}/cetak', [MahasiswaController::class, 'cetakKhs'])->name('mahasiswa.cetakKhs');

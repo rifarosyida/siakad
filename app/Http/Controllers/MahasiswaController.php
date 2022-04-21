@@ -201,5 +201,16 @@ Class MahasiswaController extends Controller
             // ->withQueryString();
         return view('mahasiswa.index', compact('paginate'));
     }
+
+    public function cetakKhs($id)
+    {
+        $nilai = Mahasiswa_MataKuliah::with('matakuliah')
+            ->where('mahasiswa_id', $id)->get();
+        $nilai->mahasiswa = Mahasiswa::with('kelas')
+            ->where('id_mahasiswa', $id)->first();
+
+        $cetakKHS = PDF::loadview('mahasiswa.cetakKhs', compact('nilai'));
+        return $cetakKHS->stream();        
+    }
 }
 
